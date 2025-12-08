@@ -7,7 +7,7 @@ export default function LandingPage() {
         <header className="w-full">
           <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
             <span className="font-primary tracking-wide text-sm">
-              CITYESCAPE
+              CityEscape
             </span>
 
             <button className="md:hidden text-xl bg-black/60 rounded-full px-3 py-2">
@@ -29,9 +29,9 @@ export default function LandingPage() {
         <main className="flex-1 flex flex-col items-center justify-center text-center px-4">
           <div className="max-w-3xl space-y-6">
             <h1 className="font-primary text-3xl sm:text-4xl lg:text-5xl leading-tight">
-              UDENDØRS ESCAPE ROOMS I
+              udendørs escape rooms i
               <br />
-              HELE 17 DANSKE BYER
+              hele 17 danske byer
             </h1>
 
             <p className="italic text-sm text-[#d1b27c]/80 font-secondary">
