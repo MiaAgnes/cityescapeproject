@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Logo from "./logo.jsx";
 
-export default function Layout({ children, disableScroll = false }) {
+export default function Layout({
+  children,
+  disableScroll = false,
+  bgClass = "landing-bg",
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -13,24 +17,19 @@ export default function Layout({ children, disableScroll = false }) {
     { title: "kontakt os", href: "/kontakt-os" },
   ];
 
-  // Hvis menuen er åben, låser vi altid scroll
   const shouldLockScroll = disableScroll || isMenuOpen;
 
   return (
     <div
       className={`
-     ${isMenuOpen ? "menu-bg" : "landing-bg"}
-     text-[#d1b27c] font-secondary
-     w-full
-     ${shouldLockScroll ? "h-[100dvh] overflow-hidden" : "min-h-screen overflow-x-hidden"}
+        ${isMenuOpen ? "menu-bg" : bgClass}
+        text-[#d1b27c] font-secondary w-full
+        min-h-screen
+        ${shouldLockScroll ? "overflow-hidden" : "overflow-x-hidden overflow-y-auto"}
       `}
     >
-      <div 
-        className={`
-          w-full bg-black/50 flex flex-col
-          ${shouldLockScroll ? "h-full overflow-hidden" : "min-h-screen"}
-        `}
-      >
+      {/* sort overlay */}
+      <div className="w-full min-h-screen bg-black/50 flex flex-col">
         {/* HEADER */}
         <header className="w-full relative z-20">
           <div
@@ -72,7 +71,11 @@ export default function Layout({ children, disableScroll = false }) {
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex gap-8 text-xs tracking-[0.25em] uppercase font-secondary">
               {navLinks.map((link) => (
-                <a key={link.title} href={link.href} className="no-underline text-[#C9955D]">
+                <a
+                  key={link.title}
+                  href={link.href}
+                  className="no-underline text-[#C9955D]"
+                >
                   {link.title}
                 </a>
               ))}
@@ -104,13 +107,16 @@ export default function Layout({ children, disableScroll = false }) {
           </nav>
         )}
 
-        {/* === CONTENT (skjules på mobil, når menu er åben) === */}
+        {/* === CONTENT + FOOTER (når menu er lukket) === */}
         {!isMenuOpen && (
           <>
-            {children}
-            
-            {/* FOOTER */}
-            <div style={{ height: "20px" }}></div>
+            {/* content */}
+            <div className="flex-1 flex flex-col">
+              {children}
+            </div>
+
+            {/* FOOTER – følger bare efter content */}
+            <div className="h-5 md:h-8" />
             <footer className="font-secondary text-[10px] text-center pb-8 text-[#C9955D]/70">
               CITY ESCAPE APS · CVR 41 34 23 74 · INFO@CITYESCAPE.DK · +45 71 96 16 87
             </footer>

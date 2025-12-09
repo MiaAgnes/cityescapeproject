@@ -8,7 +8,6 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   overscroll-behavior: none;
 }
 
@@ -46,7 +45,7 @@ body {
 
 .menu-bg {
   height: 100%;
-  background-image: url("/bg-mobile.png"); /* dit menu-billede */
+  background-image: url("/bg-mobile.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -65,5 +64,27 @@ body {
   .landing-bg {
     background-image: url("/bg-landingpage-desktop.png");
     background-position: center 25%;
+  }
+}
+
+/* Subpage baggrund (Booking, Escape Games, Kontakt Os, Priser) */
+.subpage-bg {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 767px) {
+  .subpage-bg {
+    background-image: url("/bg-mobile.png");
+    background-position: top;
+  }
+}
+
+@media (min-width: 768px) {
+  .subpage-bg {
+    background-image: url("/bg-desktop.png");
+    background-position: center;
   }
 }
