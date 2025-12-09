@@ -1,67 +1,63 @@
+import Layout from "../components/Layout.jsx";
+
 export default function LandingPage() {
   return (
-    <div className="landing-bg text-[#d1b27c] font-secondary">
-      {/* mørk overlay */}
-      <div className="w-full h-full min-h-screen bg-black/50 flex flex-col">
-        {/* HEADER */}
-        <header className="w-full">
-          <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
-            <span className="font-primary tracking-wide text-sm">
-              CityEscape
-            </span>
+    <Layout disableScroll={true}>
+      {/* HERO */}
+      <main className="flex flex-col items-center justify-start pt-8 text-center px-4 gap-10">
+        <div className="max-w-3xl space-y-6">
+          <h1 className="font-primary text-3xl sm:text-4xl lg:text-5xl leading-tight">
+            udendørs escape rooms i
+            <br />
+            hele 17 danske byer
+          </h1>
 
-            <button className="md:hidden text-xl bg-black/60 rounded-full px-3 py-2">
-              ☰
-            </button>
-
-            <nav className="hidden md:flex gap-8 text-xs tracking-[0.25em] uppercase font-secondary">
-              <a>Escape rooms</a>
-              <a>Priser</a>
-              <a>Booking</a>
-              <a>General info</a>
-              <a>Sådan spiller du</a>
-              <a>Kontakt</a>
-            </nav>
-          </div>
-        </header>
-
-        {/* HERO */}
-        <main className="flex-1 flex flex-col items-center justify-center text-center px-4">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="font-primary text-3xl sm:text-4xl lg:text-5xl leading-tight">
-              udendørs escape rooms i
-              <br />
-              hele 17 danske byer
-            </h1>
-
-            <p className="italic text-sm text-[#d1b27c]/80 font-secondary">
-              Find dit næste eventyr her...
-            </p>
-          </div>
-        </main>
+          <p className="italic text-sm text-[#d1b27c]/80 font-secondary">
+            Find dit næste eventyr her...
+          </p>
+        </div>
 
         {/* NAVIGATION CARDS */}
-        <section className="pb-12">
-          <div className="mx-auto max-w-5xl px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Escape games", "Priser", "Sådan spiller du", "Booking"].map(
-              (title) => (
-                <div
-                  key={title}
-                  className="border border-[#d1b27c]/40 bg-black/40
-                             py-4 text-center uppercase tracking-[0.2em] text-xs font-secondary"
-                >
-                  {title}
-                </div>
-              )
-            )}
+        <section className="w-full">
+          <div 
+            className="flex flex-wrap justify-center px-4"
+            style={{ gap: "20px" }}
+          >
+            {[
+              { title: "Escape games", image: "/icons/escape-games.svg", href: "/escape-games" },
+              { title: "Priser", image: "/icons/priser.svg", href: "/priser" },
+              { title: "Sådan spiller du", image: "/icons/regler.svg", href: "/sadan-spiller-du" },
+              { title: "Booking", image: "/icons/booking.svg", href: "/booking" },
+            ].map((card) => (
+              <a
+                key={card.title}
+                href={card.href}
+                style={{ width: "140px", height: "140px", borderRadius: "10px" }}
+                className="
+                  border border-[#d1b27c]/40
+                  flex flex-col items-center justify-center
+                  text-center
+                  block
+                  no-underline
+                "
+              >
+                {/* Billede */}
+                <img 
+                  src={card.image} 
+                  alt={card.title} 
+                  style={{ width: "100px", height: "100px" }}
+                  className="mb-2 object-contain opacity-90"
+                />
+                
+                {/* Tekst */}
+                <span className="font-secondary text-[#d1b27c] text-[13.5px] uppercase tracking-widest leading-tight">
+                  {card.title}
+                </span>
+              </a>
+            ))}
           </div>
         </section>
-
-        {/* FOOTER */}
-        <footer className="font-secondary text-[10px] tracking-[0.2em] text-center pb-4 text-[#d1b27c]/70">
-          CITY ESCAPE APS · CVR 41 34 23 74 · INFO@CITYESCAPE.DK · +45 71 96 16 87
-        </footer>
-      </div>
-    </div>
+      </main>
+    </Layout>
   );
 }

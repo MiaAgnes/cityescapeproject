@@ -8,6 +8,8 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* Fonte */
@@ -36,7 +38,15 @@ body {
 
 /* Landing page baggrund */
 .landing-bg {
-  min-height: 100vh;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-bg {
+  height: 100%;
+  background-image: url("/bg-mobile.png"); /* dit menu-billede */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
