@@ -4,8 +4,8 @@ export default function LandingPage() {
   return (
     <Layout disableScroll={true}>
       {/* HERO */}
-      <main className="flex flex-col items-center justify-start pt-8 text-center px-4 gap-10">
-        <div className="max-w-3xl space-y-6">
+      <main className="grid place-items-center content-start pt-8 text-center px-4 gap-10 w-full">
+        <div className="max-w-3xl grid grid-cols-1 gap-6 justify-items-center">
           <h1 className="font-primary text-3xl sm:text-4xl lg:text-5xl leading-tight">
             udendørs escape rooms i
             <br />
@@ -18,9 +18,9 @@ export default function LandingPage() {
         </div>
 
         {/* NAVIGATION CARDS */}
-        <section className="w-full">
+        <section className="w-full grid justify-center">
           <div 
-            className="flex flex-wrap justify-center px-4"
+            className="grid grid-cols-2 justify-items-center"
             style={{ gap: "20px" }}
           >
             {[
@@ -35,7 +35,7 @@ export default function LandingPage() {
                 style={{ width: "140px", height: "140px", borderRadius: "10px" }}
                 className="
                   border border-[#d1b27c]/40
-                  flex flex-col items-center justify-center
+                  grid grid-cols-1 justify-items-center content-center
                   text-center
                   block
                   no-underline

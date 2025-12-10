@@ -20,23 +20,31 @@ export default function Layout({
   const shouldLockScroll = disableScroll || isMenuOpen;
 
   return (
-    <div
-      className={`
-        ${isMenuOpen ? "menu-bg" : bgClass}
-        text-[#d1b27c] font-secondary w-full
-        min-h-screen
-        ${shouldLockScroll ? "overflow-hidden" : "overflow-x-hidden overflow-y-auto"}
-      `}
-    >
-      {/* sort overlay */}
-      <div className="w-full min-h-screen bg-black/50 flex flex-col">
+    <>
+      {/* Fixed Background */}
+      <div 
+        className={`fixed inset-0 -z-20 ${isMenuOpen ? "menu-bg" : bgClass}`} 
+      />
+      
+      {/* Fixed Overlay */}
+      <div className="fixed inset-0 -z-10 bg-black/50" />
+
+      <div
+        className={`
+          text-[#d1b27c] font-secondary w-full
+          min-h-screen
+          ${shouldLockScroll ? "overflow-hidden h-screen" : "overflow-x-hidden"}
+        `}
+      >
+        {/* Content Container */}
+        <div className="w-full min-h-screen grid grid-rows-[auto_1fr]">
         {/* HEADER */}
         <header className="w-full relative z-20">
           <div
             className="
-              mx-auto max-w-7xl px-6 pt-6 pb-4
+              mx-auto max-w-7xl px-4 pt-2 pb-4
               grid grid-cols-3 items-center
-              md:flex md:justify-between
+              md:grid md:grid-cols-[auto_1fr] md:gap-4
             "
           >
             {/* burgermenu – mobil venstre */}
@@ -55,7 +63,7 @@ export default function Layout({
               className="
                 justify-self-center
                 md:justify-self-start
-                flex flex-col items-center md:items-start gap-2
+                grid grid-cols-1 justify-items-center md:justify-items-start gap-2
                 no-underline text-[#C9955D]
               "
             >
@@ -69,7 +77,7 @@ export default function Layout({
             <div className="md:hidden" />
 
             {/* DESKTOP NAV */}
-            <nav className="hidden md:flex gap-8 text-xs tracking-[0.25em] uppercase font-secondary">
+            <nav className="hidden md:grid md:grid-flow-col md:justify-self-end gap-8 text-xs tracking-[0.25em] uppercase font-secondary">
               {navLinks.map((link) => (
                 <a
                   key={link.title}
@@ -86,11 +94,11 @@ export default function Layout({
         {/* === MOBIL: FULLSCREEN MENU-SIDE === */}
         {isMenuOpen && (
           <nav
-            className="md:hidden flex-1 flex flex-col items-center justify-start px-6 text-center w-full"
+            className="md:hidden grid grid-cols-1 justify-items-center content-start px-6 text-center w-full"
             style={{ paddingTop: "50px" }}
           >
             <div
-              className="flex flex-col w-full font-primary text-[25px]"
+              className="grid grid-cols-1 w-full font-primary text-[25px]"
               style={{ gap: "50px" }}
             >
               {navLinks.map((link) => (
@@ -109,20 +117,23 @@ export default function Layout({
 
         {/* === CONTENT + FOOTER (når menu er lukket) === */}
         {!isMenuOpen && (
-          <>
+          <div className="grid grid-rows-[1fr_auto] w-full">
             {/* content */}
-            <div className="flex-1 flex flex-col">
+            <div className="w-full">
               {children}
             </div>
 
             {/* FOOTER – følger bare efter content */}
-            <div className="h-5 md:h-8" />
-            <footer className="font-secondary text-[10px] text-center pb-8 text-[#C9955D]/70">
+            <div className="grid grid-cols-1 justify-items-center w-full">
+              <div className="h-5 md:h-8" />
+              <footer className="font-secondary text-[10px] text-center pb-8 text-[#C9955D]/70 w-full">
               CITY ESCAPE APS · CVR 41 34 23 74 · INFO@CITYESCAPE.DK · +45 71 96 16 87
             </footer>
-          </>
+            </div>
+          </div>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
