@@ -5,6 +5,7 @@ export default function Layout({
   children,
   disableScroll = false,
   bgClass = "landing-bg",
+  compactFooter = false,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -117,7 +118,7 @@ export default function Layout({
 
         {/* === CONTENT + FOOTER (når menu er lukket) === */}
         {!isMenuOpen && (
-          <div className="grid grid-rows-[1fr_auto] w-full">
+          <div className={`w-full grid ${compactFooter ? "grid-rows-[auto_auto]" : "grid-rows-[1fr_auto]"}`}>
             {/* content */}
             <div className="w-full">
               {children}

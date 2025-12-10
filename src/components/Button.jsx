@@ -1,5 +1,4 @@
 export default function Button({ children, onClick, href, className = "", size = "normal" }) {
-  // Vi bruger inline styles for at være helt sikre på at størrelsen slår igennem
   const baseClasses = `
     border border-[#8C571E] 
     text-[#fff] 
