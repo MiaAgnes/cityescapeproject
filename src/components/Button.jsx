@@ -5,8 +5,8 @@ export default function Button({ children, onClick, href, className = "", size =
     font-secondary 
     uppercase 
     tracking-widest 
-    rounded-[20px]
-    hover:bg-[#C9955D]/10 
+    rounded-full
+    hover:bg-[#b08250] 
     transition-colors 
     cursor-pointer
     grid place-items-center
@@ -14,8 +14,8 @@ export default function Button({ children, onClick, href, className = "", size =
   `;
 
   const sizeStyles = {
-    large: { padding: "2px 8px", fontSize: "18px" },
-    normal: { padding: "12px 32px", fontSize: "12px" },
+    large: { padding: "10px 32px", fontSize: "16px" },
+    normal: { padding: "8px 24px", fontSize: "12px" },
   };
 
   const style = sizeStyles[size] || sizeStyles.normal;

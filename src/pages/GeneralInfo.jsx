@@ -64,7 +64,7 @@ export default function GeneralInfo() {
               Her opererer vi i øjeblikket:
             </p>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-left text-[#d1b27c] font-secondary text-sm sm:text-base mt-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-left text-[#C9955D] font-secondary text-sm sm:text-base mt-2">
               {cities.map((city) => (
                 <div key={city} className="flex items-center">
                   <img src="/logo-uden-bg.svg" alt="" className="w-4 h-4 mr-1" />

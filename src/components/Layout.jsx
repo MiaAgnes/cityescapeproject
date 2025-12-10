@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./logo.jsx";
 
 export default function Layout({
   children,
-  disableScroll = false,
   bgClass = "landing-bg",
   compactFooter = false,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Lås scroll på body når menuen er åben
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   const navLinks = [
     { title: "escape games", href: "/escape-games" },
@@ -17,8 +31,6 @@ export default function Layout({
     { title: "sådan spiller du", href: "/sadan-spiller-du" },
     { title: "kontakt os", href: "/kontakt-os" },
   ];
-
-  const shouldLockScroll = disableScroll || isMenuOpen;
 
   return (
     <>
@@ -34,13 +46,13 @@ export default function Layout({
         className={`
           text-[#d1b27c] font-secondary w-full
           min-h-screen
-          ${shouldLockScroll ? "overflow-hidden h-screen" : "overflow-x-hidden"}
+          overflow-x-hidden
         `}
       >
         {/* Content Container */}
         <div className="w-full min-h-screen grid grid-rows-[auto_1fr]">
         {/* HEADER */}
-        <header className="w-full relative z-20">
+        <header className="w-full relative z-50">
           <div
             className="
               mx-auto max-w-7xl px-4 pt-2 pb-4
@@ -95,12 +107,11 @@ export default function Layout({
         {/* === MOBIL: FULLSCREEN MENU-SIDE === */}
         {isMenuOpen && (
           <nav
-            className="md:hidden grid grid-cols-1 justify-items-center content-start px-6 text-center w-full"
-            style={{ paddingTop: "50px" }}
+            className="md:hidden fixed inset-0 z-40 grid grid-cols-1 justify-items-center content-center px-6 text-center w-full h-[100dvh]"
           >
             <div
               className="grid grid-cols-1 w-full font-primary text-[25px]"
-              style={{ gap: "50px" }}
+              style={{ gap: "40px" }}
             >
               {navLinks.map((link) => (
                 <a

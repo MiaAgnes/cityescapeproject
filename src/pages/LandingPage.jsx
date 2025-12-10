@@ -2,7 +2,7 @@ import Layout from "../components/Layout.jsx";
 
 export default function LandingPage() {
   return (
-    <Layout disableScroll={true}>
+    <Layout>
       {/* HERO */}
       <main className="grid place-items-center content-start pt-8 text-center px-4 gap-10 w-full">
         <div className="max-w-3xl grid grid-cols-1 gap-6 justify-items-center">

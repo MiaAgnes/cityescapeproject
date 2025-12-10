@@ -11,7 +11,7 @@ export default function Priser() {
   ];
 
   return (
-    <Layout disableScroll={true} bgClass="subpage-bg" compactFooter={true}>
+    <Layout bgClass="subpage-bg" compactFooter={true}>
       <main className="grid place-items-center pt-8 px-6 w-full">
         <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-8 text-center">
           

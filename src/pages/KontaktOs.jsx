@@ -1,12 +1,130 @@
+import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import Layout from "../components/Layout.jsx";
+import Button from "../components/Button.jsx";
 
 export default function KontaktOs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ loading: false, success: false, error: null });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: false, error: null });
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: new Date(),
+      });
+      setStatus({ loading: false, success: true, error: null });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Error adding document: ", err);
+      setStatus({ loading: false, success: false, error: "Der skete en fejl. Prøv igen senere." });
+    }
+  };
+
   return (
     <Layout bgClass="subpage-bg">
-      <main className="grid place-items-center pt-8 px-4 w-full">
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-10 text-center">
-          <h1 className="font-primary text-3xl text-[#C9955D]">Kontakt Os</h1>
-          <p className="text-[#C9955D]">Kontakt os her...</p>
+      <main className="grid place-items-center pt-8 px-6 w-full pb-12">
+        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-8 text-center">
+          
+          <h1 className="font-primary text-3xl text-[#C9955D]">kontakt os</h1>
+          
+          <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+            Har du spørgsmål til et arrangement, eller vil du vide mere om vores spil? Udfyld formularen herunder, så vender vi tilbage hurtigst muligt.
+          </p>
+
+          {status.success ? (
+            <div className="bg-[#C9955D]/20 border border-[#C9955D] p-6 rounded text-white font-secondary">
+              <h3 className="font-primary text-xl mb-2">Tak for din besked!</h3>
+              <p>Vi har modtaget din henvendelse og vender tilbage snarest.</p>
+              <button 
+                onClick={() => setStatus({ ...status, success: false })}
+                className="mt-4 text-[#C9955D] underline cursor-pointer"
+              >
+                Send en ny besked
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="w-full grid gap-4 text-left">
+              <div>
+                <label htmlFor="name" className="block text-[#C9955D] font-secondary text-sm mb-1">Navn</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:border-[#fff] transition-colors"
+                  placeholder="Dit navn"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-[#C9955D] font-secondary text-sm mb-1">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:border-[#fff] transition-colors"
+                  placeholder="din@email.dk"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-[#C9955D] font-secondary text-sm mb-1">Besked</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:border-[#fff] transition-colors resize-none"
+                  placeholder="Skriv din besked her..."
+                ></textarea>
+              </div>
+
+              {status.error && (
+                <p className="text-red-400 text-sm text-center">{status.error}</p>
+              )}
+
+              <div className="justify-self-center mt-2">
+                <button 
+                  type="submit" 
+                  disabled={status.loading}
+                  className="bg-transparent border-none p-0 cursor-pointer"
+                >
+                  <Button size="large">
+                    {status.loading ? "SENDER..." : "SEND BESKED"}
+                  </Button>
+                </button>
+              </div>
+            </form>
+          )}
+
+          <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mt-4"></div>
+
+          <div className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+            <p>Du kan også fange os på telefon eller mail:</p>
+            <p className="text-[#C9955D] mt-2">+45 71 96 16 87</p>
+            <p className="text-[#C9955D]">INFO@CITYESCAPE.DK</p>
+          </div>
+
         </div>
       </main>
     </Layout>

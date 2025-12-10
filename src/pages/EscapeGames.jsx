@@ -34,7 +34,7 @@ export default function EscapeGames() {
                   target={game.externalLink ? "_blank" : undefined}
                   rel={game.externalLink ? "noopener noreferrer" : undefined}
                 >
-                  <Button size="large" className="-mt-[5px]">Læs mere</Button>
+                  <Button size="normal" className="-mt-[5px]">Læs mere</Button>
                 </a>
               </div>
             ))}
