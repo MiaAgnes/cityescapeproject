@@ -54,7 +54,7 @@ export default function Layout({
         <header className="w-full relative z-50">
           <div
             className="
-              mx-auto max-w-7xl px-4 pt-2 pb-4
+              w-full px-4 md:px-6 lg:px-10 xl:px-16 pt-2 pb-4
               grid grid-cols-3 items-center
               md:flex md:justify-between md:items-center
             "
@@ -70,7 +70,7 @@ export default function Layout({
             </button>
 
             {/* LOGO SECTION */}
-            <div className="justify-self-center md:justify-self-start flex items-center md:gap-6">
+            <div className="justify-self-center md:justify-self-start flex items-center md:gap-4 lg:gap-6 xl:gap-8">
               <a
                 href="/"
                 className="
@@ -79,25 +79,25 @@ export default function Layout({
                 "
               >
                 <Logo height={60} />
-                <span className="font-primary tracking-wide text-[20px] md:text-[16px] lg:text-[20px]">
+                <span className="font-primary tracking-wide text-[20px] md:text-[16px] lg:text-[20px] xl:text-[24px]">
                   cityescape
                 </span>
               </a>
               
               {/* Vertical Divider (Desktop Only) */}
-              <div className="hidden md:block h-12 w-[1px] bg-[#C9955D]"></div>
+              <div className="hidden md:block h-10 lg:h-12 w-[1px] bg-[#C9955D]"></div>
             </div>
 
             {/* tom spacer på mobil for at holde logo centreret */}
             <div className="md:hidden" />
 
             {/* DESKTOP NAV */}
-            <nav className="hidden md:grid md:grid-flow-col md:justify-self-end md:gap-3 lg:gap-8 md:text-[10px] lg:text-xs md:tracking-[0.1em] lg:tracking-[0.25em] uppercase font-secondary">
+            <nav className="hidden md:flex items-center md:gap-3 lg:gap-6 xl:gap-10 md:text-[10px] lg:text-[12px] xl:text-[14px] md:tracking-[0.1em] lg:tracking-[0.2em] uppercase font-secondary whitespace-nowrap">
               {navLinks.map((link) => (
                 <a
                   key={link.title}
                   href={link.href}
-                  className="no-underline text-[#C9955D]"
+                  className="no-underline text-[#C9955D] hover:text-white transition-colors"
                 >
                   {link.title}
                 </a>
