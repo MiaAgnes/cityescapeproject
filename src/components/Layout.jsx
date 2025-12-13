@@ -8,7 +8,6 @@ export default function Layout({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Lås scroll på body når menuen er åben
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -57,7 +56,7 @@ export default function Layout({
             className="
               mx-auto max-w-7xl px-4 pt-2 pb-4
               grid grid-cols-3 items-center
-              md:grid md:grid-cols-[auto_1fr] md:gap-4
+              md:flex md:justify-between md:items-center
             "
           >
             {/* burgermenu – mobil venstre */}
@@ -70,27 +69,30 @@ export default function Layout({
               ☰
             </button>
 
-            {/* LOGO – midten på mobil, venstre på desktop */}
-            <a
-              href="/"
-              className="
-                justify-self-center
-                md:justify-self-start
-                grid grid-cols-1 justify-items-center md:justify-items-start gap-2
-                no-underline text-[#C9955D]
-              "
-            >
-              <Logo height={60} />
-              <span className="font-primary tracking-wide text-[20px]">
-                cityescape
-              </span>
-            </a>
+            {/* LOGO SECTION */}
+            <div className="justify-self-center md:justify-self-start flex items-center md:gap-6">
+              <a
+                href="/"
+                className="
+                  flex flex-col md:flex-row items-center gap-2 md:gap-4
+                  no-underline text-[#C9955D]
+                "
+              >
+                <Logo height={60} />
+                <span className="font-primary tracking-wide text-[20px] md:text-[16px] lg:text-[20px]">
+                  cityescape
+                </span>
+              </a>
+              
+              {/* Vertical Divider (Desktop Only) */}
+              <div className="hidden md:block h-12 w-[1px] bg-[#C9955D]"></div>
+            </div>
 
             {/* tom spacer på mobil for at holde logo centreret */}
             <div className="md:hidden" />
 
             {/* DESKTOP NAV */}
-            <nav className="hidden md:grid md:grid-flow-col md:justify-self-end gap-8 text-xs tracking-[0.25em] uppercase font-secondary">
+            <nav className="hidden md:grid md:grid-flow-col md:justify-self-end md:gap-3 lg:gap-8 md:text-[10px] lg:text-xs md:tracking-[0.1em] lg:tracking-[0.25em] uppercase font-secondary">
               {navLinks.map((link) => (
                 <a
                   key={link.title}
