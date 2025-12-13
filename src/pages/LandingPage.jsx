@@ -4,24 +4,25 @@ export default function LandingPage() {
   return (
     <Layout>
       {/* HERO */}
-      <main className="grid place-items-center content-start pt-8 text-center px-4 gap-10 w-full">
-        <div className="max-w-3xl grid grid-cols-1 gap-6 justify-items-center">
-          <h1 className="font-primary text-3xl sm:text-4xl lg:text-5xl leading-tight">
+      <main className="flex flex-col h-full w-full px-4">
+        
+        {/* TEXT SECTION - Centered in available space */}
+        <div className="flex-1 flex flex-col justify-center items-center gap-6 md:gap-8 text-center">
+          <h1 className="font-primary text-3xl sm:text-4xl lg:text-6xl leading-tight text-[#C9955D]">
             udendørs escape rooms i
             <br />
             hele 17 danske byer
           </h1>
 
-          <p className="italic text-sm text-[#d1b27c]/80 font-secondary">
+          <p className="italic text-sm md:text-lg text-[#d1b27c]/80 font-secondary tracking-wider">
             Find dit næste eventyr her...
           </p>
         </div>
 
-        {/* NAVIGATION CARDS */}
-        <section className="w-full grid justify-center">
+        {/* NAVIGATION CARDS - Pushed to bottom */}
+        <section className="w-full grid justify-center pb-6 md:pb-12 lg:pb-16">
           <div 
-            className="grid grid-cols-2 justify-items-center"
-            style={{ gap: "20px" }}
+            className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-5 md:gap-8 lg:gap-12"
           >
             {[
               { title: "Escape games", image: "/icons/escape-games.svg", href: "/escape-games" },
@@ -32,25 +33,24 @@ export default function LandingPage() {
               <a
                 key={card.title}
                 href={card.href}
-                style={{ width: "140px", height: "140px", borderRadius: "10px" }}
                 className="
-                  border border-[#d1b27c]/40
+                  w-[140px] h-[140px] md:w-[180px] md:h-[180px] lg:w-[220px] lg:h-[220px]
+                  border border-[#d1b27c]/40 rounded-[10px]
                   grid grid-cols-1 justify-items-center content-center
                   text-center
-                  block
                   no-underline
+                  hover:bg-[#d1b27c]/10 transition-colors
                 "
               >
                 {/* Billede */}
                 <img 
                   src={card.image} 
                   alt={card.title} 
-                  style={{ width: "100px", height: "100px" }}
-                  className="mb-2 object-contain opacity-90"
+                  className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] mb-2 object-contain opacity-90"
                 />
                 
                 {/* Tekst */}
-                <span className="font-secondary text-[#d1b27c] text-[13.5px] uppercase tracking-widest leading-tight">
+                <span className="font-secondary text-[#d1b27c] text-[12px] md:text-[14px] lg:text-[16px] uppercase tracking-widest leading-tight px-2">
                   {card.title}
                 </span>
               </a>
