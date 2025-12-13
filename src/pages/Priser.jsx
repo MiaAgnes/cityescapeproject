@@ -12,15 +12,15 @@ export default function Priser() {
 
   return (
     <Layout bgClass="subpage-bg" compactFooter={true}>
-      <main className="grid place-items-center pt-8 px-6 w-full">
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-8 text-center">
+      <main className="grid place-items-center pt-8 px-6 w-full min-h-[60vh]">
+        <div className="w-full max-w-lg md:max-w-3xl grid grid-cols-1 justify-items-center gap-8 md:gap-12 text-center">
           
-          <h1 className="font-secondary text-3xl text-[#C9955D]">Priser pr. hold</h1>
+          <h1 className="font-secondary text-3xl md:text-5xl text-[#C9955D]">Priser pr. hold</h1>
 
           {/* Price List */}
-          <div className="w-full grid gap-4 font-secondary text-white text-sm sm:text-base">
+          <div className="w-full grid gap-4 md:gap-6 font-secondary text-white text-sm sm:text-base md:text-2xl">
             {prices.map((item, index) => (
-              <div key={index} className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
+              <div key={index} className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:gap-8">
                 <span className="text-left whitespace-nowrap">{item.label}</span>
                 <div className="h-[1px] bg-[#C9955D] w-full opacity-50"></div>
                 <span className="text-right whitespace-nowrap">{item.price}</span>
@@ -29,12 +29,12 @@ export default function Priser() {
           </div>
 
           {/* Description */}
-          <p className="text-white italic font-secondary text-sm sm:text-base max-w-md leading-relaxed px-4">
+          <p className="text-white italic font-secondary text-sm sm:text-base md:text-xl max-w-md md:max-w-2xl leading-relaxed px-4">
             Vi anbefaler maks. 6 deltagere pr. hold for den bedste oplevelse og tydelig kommunikation under missionen.
           </p>
 
           {/* Button */}
-          <div className="mt-4">
+          <div className="mt-4 md:mt-8">
             <a href="/escape-games" className="no-underline">
               <Button size="large">FIND GAME</Button>
             </a>
