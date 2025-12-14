@@ -298,6 +298,10 @@ export default function Booking() {
                   {fieldErrors.route && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.route}</p>}
                 </div>
 
+                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2 min-[700px]:col-span-2 min-[700px]:text-3xl">
+                  holdlederens oplysninger
+                </h2>
+
                 <div className="relative">
                   <label htmlFor="name" className={labelClasses}>Fulde navn*</label>
                   <input
