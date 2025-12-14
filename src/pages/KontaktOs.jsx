@@ -58,7 +58,7 @@ export default function KontaktOs() {
             </div>
           ) : (
             <div className="w-full max-w-5xl grid gap-6">
-                <h2 className="font-primary text-2xl text-[#C9955D] uppercase tracking-wide">SKRIV DIT MYSTERIUM HER</h2>
+                <h2 className="font-primary text-2xl text-[#C9955D]">skriv dit mysterium her</h2>
 
                 <form onSubmit={handleSubmit} className="w-full grid gap-4 text-left">
                   <div>
