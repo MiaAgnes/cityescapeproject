@@ -68,7 +68,9 @@ export default function GameDetails() {
                 </div>
              </div>
              
-             <Button size="large">BOOK</Button>
+             <a href="/cityescapeproject/booking" className="no-underline">
+               <Button size="large">BOOK</Button>
+             </a>
           </div>
 
         </div>

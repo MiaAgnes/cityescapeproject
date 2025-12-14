@@ -26,7 +26,7 @@ export const games = [
     title: "hunt a killer",
     description: "Hunt a Killer lader jer træde ind i rollen som efterforskere i et nervepirrende mordmysterie. En farlig gerningsmand er på fri fod, og kun jeres evne til at følge spor, læse situationer og samle brikkerne kan forhindre endnu et angreb. Undervejs løser I gåder, analyserer beviser og navigerer gennem spændende lokationer i byen. Spillet skaber en intens atmosfære fyldt med mysterier og kræver både logik og teamwork. Ideelt for grupper, der elsker krimifortællinger og dybdegående udfordringer.",
     shortDescription: "En morder er på fri fod. Jagt spor rundtom i byen, følg de kryptiske beskeder og opklar sagen inden det næste angreb.",
-    icon: "/icons/hunt-a-killer.svg",
+    icon: "/cityescapeproject/icons/hunt-a-killer.svg",
     duration: "2 timer",
     participants: "2+ deltagere",
     difficulty: "Svær",

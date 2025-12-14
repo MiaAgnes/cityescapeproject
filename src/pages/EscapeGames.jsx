@@ -39,7 +39,7 @@ export default function EscapeGames() {
                 {/* Button */}
                 <div className="shrink-0 mt-2 md:mt-0 self-center">
                   <a 
-                    href={game.externalLink || `/escape-games/${game.id}`} 
+                    href={game.externalLink || `/cityescapeproject/escape-games/${game.id}`} 
                     className="no-underline block"
                     target={game.externalLink ? "_blank" : undefined}
                     rel={game.externalLink ? "noopener noreferrer" : undefined}

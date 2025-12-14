@@ -1,5 +1,5 @@
 // Logo.jsx
-const logo = "/Logo.png";
+const logo = "/cityescapeproject/Logo.png";
 
 export default function Logo({ height, className }) {
   return (
