@@ -89,7 +89,7 @@ export default function Layout({
             <div className="min-[700px]:hidden" />
 
             {/* DESKTOP NAV */}
-            <nav className="hidden min-[700px]:flex items-center min-[700px]:gap-2 lg:gap-6 xl:gap-10 min-[700px]:text-[10px] lg:text-[12px] xl:text-[14px] min-[700px]:tracking-[0.1em] lg:tracking-[0.2em] uppercase font-secondary whitespace-nowrap">
+            <nav className="hidden min-[700px]:flex items-center min-[700px]:gap-2 lg:gap-6 xl:gap-10 min-[700px]:text-[10px] lg:text-[12px] xl:text-[14px] min-[700px]:tracking-widest lg:tracking-widest uppercase font-secondary whitespace-nowrap">
               {navLinks.map((link) => (
                 <a
                   key={link.title}
@@ -106,7 +106,7 @@ export default function Layout({
         {/* === MOBIL: FULLSCREEN MENU-SIDE === */}
         {isMenuOpen && (
           <nav
-            className="md:hidden fixed inset-0 z-40 grid grid-cols-1 justify-items-center content-center px-6 text-center w-full h-[100dvh]"
+            className="md:hidden fixed inset-0 z-40 grid grid-cols-1 justify-items-center content-center px-6 text-center w-full h-dvh"
           >
             <div
               className="grid grid-cols-1 w-full font-primary text-[25px]"

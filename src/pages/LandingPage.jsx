@@ -46,7 +46,7 @@ export default function LandingPage() {
                 <img 
                   src={card.image} 
                   alt={card.title} 
-                  className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] mb-2 object-contain opacity-90"
+                  className="w-20 h-20 md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] mb-2 object-contain opacity-90"
                 />
                 
                 {/* Tekst */}

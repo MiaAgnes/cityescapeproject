@@ -34,7 +34,7 @@ export default function SadanSpillerDu() {
 
           {sections.map((section, index) => (
             <div key={index} className="w-full grid justify-items-center">
-              <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
+              <div className="h-px bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
               
               <h2 className="font-primary text-xl text-[#C9955D] mb-2 min-[700px]:mb-4">
                 {section.title}
@@ -46,7 +46,7 @@ export default function SadanSpillerDu() {
             </div>
           ))}
 
-          <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mt-2"></div>
+          <div className="h-px bg-[#C9955D] w-full opacity-50 mt-2"></div>
 
           <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl">
             <p>

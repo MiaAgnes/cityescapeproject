@@ -18,7 +18,7 @@ export default function EscapeGames() {
                 className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 w-full"
               >
                 {/* Icon */}
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <img 
                     src={game.icon} 
                     alt="" 
@@ -27,7 +27,7 @@ export default function EscapeGames() {
                 </div>
 
                 {/* Text Content */}
-                <div className="flex-grow text-center md:text-left grid gap-2">
+                <div className="grow text-center md:text-left grid gap-2">
                   <h2 className="text-[#C9955D] font-primary text-2xl md:text-3xl leading-none">
                     {game.title}
                   </h2>
@@ -37,7 +37,7 @@ export default function EscapeGames() {
                 </div>
 
                 {/* Button */}
-                <div className="flex-shrink-0 mt-2 md:mt-0 self-center">
+                <div className="shrink-0 mt-2 md:mt-0 self-center">
                   <a 
                     href={game.externalLink || `/escape-games/${game.id}`} 
                     className="no-underline block"

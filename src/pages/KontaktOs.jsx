@@ -58,7 +58,7 @@ export default function KontaktOs() {
             </div>
           ) : (
             <div className="w-full max-w-5xl grid gap-6">
-                <h2 className="font-primary text-2xl text-[#C9955D]">skriv dit mysterium her</h2>
+                <h2 className="font-primary text-2xl text-[#C9955D] uppercase tracking-wide">SKRIV DIT MYSTERIUM HER</h2>
 
                 <form onSubmit={handleSubmit} className="w-full grid gap-4 text-left">
                   <div>
@@ -108,7 +108,7 @@ export default function KontaktOs() {
             </div>
           )}
 
-          <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mt-4"></div>
+          <div className="h-px bg-[#C9955D] w-full opacity-50 mt-4"></div>
 
           <div className="text-white font-secondary text-sm sm:text-base leading-relaxed">
             <p>Du kan også fange os på telefon eller mail:</p>

@@ -1,16 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import Button from "../components/Button.jsx";
 
-const KeyIcon = () => (
-  <svg 
-    viewBox="0 0 24 24" 
-    fill="currentColor" 
-    className="w-4 h-4 text-[#C9955D] inline-block mr-1"
-  >
-    <path d=" 6a5.99 -2h2v-2h2v-2zM7 15c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 35 3-3 3z"/>
-  </svg>
-);
-
 export default function GeneralInfo() {
   const cities = [
     "Aalborg", "Aarhus", "Esbjerg", "Fredericia",
@@ -81,7 +71,7 @@ export default function GeneralInfo() {
           {/* Info Sections */}
           {sections.map((section, index) => (
             <div key={index} className="w-full grid justify-items-center">
-              <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
+              <div className="h-px bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
               
               <h2 className="font-primary text-xl text-[#C9955D] mb-2 min-[700px]:mb-4">
                 {section.title}
@@ -93,7 +83,7 @@ export default function GeneralInfo() {
             </div>
           ))}
 
-          <div className="h-[1px] bg-[#C9955D] w-full opacity-50"></div>
+          <div className="h-px bg-[#C9955D] w-full opacity-50"></div>
 
           {/* Footer / Contact Section */}
           <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl">

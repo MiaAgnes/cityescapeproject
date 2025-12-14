@@ -38,7 +38,7 @@ export default function GameDetails() {
           </div>
 
           {/* Stats - Centered in available space */}
-          <div className="flex justify-center gap-6 min-[700px]:gap-16 w-full -mt-[20px]">
+          <div className="flex justify-center gap-6 min-[700px]:gap-16 w-full -mt-5">
              {/* Stat 1 */}
              <div className="flex flex-col items-center gap-1">
                <img src="/icons/varighed.svg" alt="Varighed" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
@@ -57,7 +57,7 @@ export default function GameDetails() {
           </div>
 
           {/* Bottom Section: Success Rate + Button */}
-          <div className="w-full max-w-xl flex flex-col gap-4 min-[700px]:gap-8 items-center pb-[20px]">
+          <div className="w-full max-w-xl flex flex-col gap-4 min-[700px]:gap-8 items-center pb-5">
              <div className="w-full flex flex-col gap-1">
                 <div className="flex justify-between text-[#C9955D] font-primary text-lg min-[700px]:text-xl">
                   <span>Successrate</span>
