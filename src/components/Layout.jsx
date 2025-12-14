@@ -106,7 +106,7 @@ export default function Layout({
         {/* === MOBIL: FULLSCREEN MENU-SIDE === */}
         {isMenuOpen && (
           <nav
-            className="md:hidden fixed inset-0 z-40 grid grid-cols-1 justify-items-center content-center px-6 text-center w-full h-dvh"
+            className="md:hidden fixed inset-0 z-40 grid grid-cols-1 justify-items-center content-center px-6 text-center w-full h-dvh pt-[100px]"
           >
             <div
               className="grid grid-cols-1 w-full font-primary text-[25px]"
