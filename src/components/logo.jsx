@@ -1,5 +1,5 @@
 // Logo.jsx
-import logo from "/public/logo.png";
+const logo = "/Logo.png";
 
 export default function Logo({ height, className }) {
   return (
