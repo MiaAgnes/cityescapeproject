@@ -19,79 +19,58 @@ export default function GameDetails() {
 
   return (
     <Layout bgClass="subpage-bg">
-      {/* Main container using Grid instead of Flex */}
-      <main className="grid place-items-center px-6 pt-4 pb-10 w-full">
-        {/* Content wrapper using Grid for vertical stacking */}
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-4 text-center">
-          {/* Game Icon */}
-          <img
-            src={game.icon}
-            alt={game.title}
-            className="w-[80px] sm:w-[100px]"
-          />
-
-          {/* Title */}
-          <h1 className="font-primary text-2xl sm:text-3xl text-[#C9955D] -mt-2">
-            {game.title}
-          </h1>
-
-          {/* Description */}
-          <p className="text-[#fff] leading-relaxed text-sm sm:text-base">
-            {game.description}
-          </p>
-
-          {/* Stats Grid - Combined Icons and Text */}
-          <div className="w-full grid grid-cols-3 justify-items-center mt-2">
-            {/* Icons */}
-            <img
-              src="/icons/varighed.svg"
-              alt="Varighed"
-              className="object-contain -mt-0.5"
-              style={{ width: '5rem', height: '5rem' }}
-            />
-            <img
-              src="/icons/deltagere.svg"
-              alt="Deltagere"
-              className="object-contain -mt-0.5"
-              style={{ width: '5rem', height: '5rem' }}
-            />
-            <img
-              src="/icons/svaerhedsgrad.svg"
-              alt="Sværhedsgrad"
-              className="object-contain -mt-0.5"
-              style={{ width: '5rem', height: '5rem' }}
-            />
-
-            {/* Text */}
-            <span className="text-[#C9955D] text-sm sm:text-base font-secondary -mt-0.5">
-              {game.duration}
-            </span>
-            <span className="text-[#C9955D] text-sm sm:text-base font-secondary -mt-0.5">
-              {game.participants}
-            </span>
-            <span className="text-[#C9955D] text-sm sm:text-base font-secondary -mt-0.5">
-              {game.difficulty}
-            </span>
+      <main className="w-full min-h-screen flex flex-col items-center pt-0 pb-8 px-4">
+        <div className="-mt-[30px] min-[700px]:-mt-[50px] w-full max-w-4xl flex flex-col items-center text-center min-h-[calc(100vh-100px)] justify-start py-2 min-[700px]:py-8 gap-4 min-[700px]:gap-8">
+          
+          {/* Top Section: Icon + Title + Description */}
+          <div className="flex flex-col items-center gap-2 min-[700px]:gap-4 w-full">
+             <img 
+               src={game.icon} 
+               alt={game.title}
+               className="h-16 min-[700px]:h-24 w-auto object-contain" 
+             />
+             <h1 className="font-primary text-3xl min-[700px]:text-5xl text-[#C9955D]">
+               {game.title}
+             </h1>
+             <p className="text-white font-secondary text-sm min-[700px]:text-lg leading-relaxed max-w-2xl">
+               {game.description}
+             </p>
           </div>
 
-          {/* Success Rate */}
-          <div className="w-full mt-2 px-2 grid gap-0">
-            <div className="grid grid-cols-2 text-[#C9955D] text-sm sm:text-base font-primary">
-              <span className="text-left">successrate</span>
-              <span className="text-right">{game.successRate}%</span>
-            </div>
-            <div className="w-full h-3 border border-[#C9955D]/50 rounded-full p-[2px]">
-              <div
-                className="h-full bg-[#C9955D] rounded-full"
-                style={{ width: `${game.successRate}%` }}
-              ></div>
-            </div>
+          {/* Stats - Centered in available space */}
+          <div className="flex justify-center gap-6 min-[700px]:gap-16 w-full -mt-[20px]">
+             {/* Stat 1 */}
+             <div className="flex flex-col items-center gap-1">
+               <img src="/icons/varighed.svg" alt="Varighed" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.duration}</span>
+             </div>
+             {/* Stat 2 */}
+             <div className="flex flex-col items-center gap-1">
+               <img src="/icons/deltagere.svg" alt="Deltagere" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.participants}</span>
+             </div>
+             {/* Stat 3 */}
+             <div className="flex flex-col items-center gap-1">
+               <img src="/icons/svaerhedsgrad.svg" alt="Sværhedsgrad" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.difficulty}</span>
+             </div>
           </div>
 
-          {/* Book Button */}
-          <div style={{ marginTop: "12px" }}>
-            <Button size="large">BOOK</Button>
+          {/* Bottom Section: Success Rate + Button */}
+          <div className="w-full max-w-xl flex flex-col gap-4 min-[700px]:gap-8 items-center pb-[20px]">
+             <div className="w-full flex flex-col gap-1">
+                <div className="flex justify-between text-[#C9955D] font-primary text-lg min-[700px]:text-xl">
+                  <span>Successrate</span>
+                  <span>{game.successRate}%</span>
+                </div>
+                <div className="w-full h-4 min-[700px]:h-4 border border-[#C9955D] rounded-full p-0.5">
+                  <div className="h-full bg-[#C9955D] rounded-full" style={{ width: `${game.successRate}%` }}></div>
+                </div>
+             </div>
+             
+             <Button size="large">BOOK</Button>
           </div>
+
         </div>
       </main>
     </Layout>

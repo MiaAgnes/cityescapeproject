@@ -12,13 +12,13 @@ export default function Priser() {
 
   return (
     <Layout bgClass="subpage-bg" compactFooter={true}>
-      <main className="grid place-items-center pt-8 px-6 w-full min-h-[60vh]">
-        <div className="w-full max-w-lg md:max-w-3xl grid grid-cols-1 justify-items-center gap-8 md:gap-12 text-center">
+      <main className="flex flex-col items-center justify-center w-full h-screen pt-16 pb-4 px-6 box-border overflow-hidden">
+        <div className="w-full max-w-lg md:max-w-3xl flex flex-col items-center justify-between h-full max-h-[80vh] md:max-h-none md:grid md:grid-cols-1 md:gap-8 text-center">
           
-          <h1 className="font-secondary text-3xl md:text-5xl text-[#C9955D]">Priser pr. hold</h1>
+          <h1 className="font-secondary text-2xl md:text-5xl text-[#C9955D]">Priser pr. hold</h1>
 
           {/* Price List */}
-          <div className="w-full grid gap-4 md:gap-6 font-secondary text-white text-sm sm:text-base md:text-2xl">
+          <div className="w-full grid gap-2 md:gap-6 font-secondary text-white text-sm sm:text-base md:text-2xl">
             {prices.map((item, index) => (
               <div key={index} className="grid grid-cols-[auto_1fr_auto] items-center gap-4 md:gap-8">
                 <span className="text-left whitespace-nowrap">{item.label}</span>
@@ -29,12 +29,12 @@ export default function Priser() {
           </div>
 
           {/* Description */}
-          <p className="text-white italic font-secondary text-sm sm:text-base md:text-xl max-w-md md:max-w-2xl leading-relaxed px-4">
+          <p className="text-white italic font-secondary text-xs sm:text-base md:text-xl max-w-md md:max-w-2xl leading-relaxed px-4">
             Vi anbefaler maks. 6 deltagere pr. hold for den bedste oplevelse og tydelig kommunikation under missionen.
           </p>
 
           {/* Button */}
-          <div className="mt-4 md:mt-8">
+          <div>
             <a href="/escape-games" className="no-underline">
               <Button size="large">FIND GAME</Button>
             </a>
