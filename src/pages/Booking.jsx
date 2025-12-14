@@ -18,6 +18,7 @@ export default function Booking() {
     message: "",
   });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const games = ["Operation Mindfall", "Black Out", "Hunt A Killer", "Den Magiske Portal", "Red Julen", "Save The Wedding(Kvinder)", "Save The Wedding(Mænd)", "Børnefødselsdag"];
   const cities = ["Aalborg", "Aarhus", "Esbjerg", "Fredericia", "Herning", "Viborg", "Randers", "Horsens", "Sønderborg", "Vejle", "Silkeborg", "Kolding", "Odense", "Næstved", "Roskilde", "Helsingør", "København"]; 
@@ -75,13 +76,14 @@ export default function Booking() {
   const handleDateChange = (e) => {
     setFormData({ ...formData, date: e.target.value, time: "" });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: null });
+    setFieldErrors({});
 
     const setErrorAndScroll = (errorMessage, fieldId) => {
-      setStatus({ loading: false, success: false, error: errorMessage });
+      setStatus(prev => ({ ...prev, loading: false }));
+      setFieldErrors(prev => ({ ...prev, [fieldId]: errorMessage }));
       // Vent en lille smule for at sikre at state er opdateret, og scroll derefter
       setTimeout(() => {
         const element = document.getElementById(fieldId);
@@ -183,16 +185,16 @@ export default function Booking() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="w-full grid gap-6 text-left">
+            <form onSubmit={handleSubmit} className="w-full grid gap-6 text-left" noValidate>
               
               {/* SEKTION 1: INDLED JERES MISSION */}
-              <div className="grid gap-4 min-[700px]:grid-cols-2 min-[700px]:gap-x-12 min-[700px]:gap-y-6">
+              <div className="grid gap-8 min-[700px]:grid-cols-2 min-[700px]:gap-x-12 min-[700px]:gap-y-10">
                 <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2 min-[700px]:col-span-2 min-[700px]:text-3xl">
                   indled jeres mission
                 </h2>
 
-                <div>
-                  <label htmlFor="game" className={labelClasses}>Escape game*</label>
+                <div className="relative">
+                  <label htmlFor="game" className={labelClasses}>Escape Game*</label>
                   <select
                     id="game"
                     name="game"
@@ -204,9 +206,10 @@ export default function Booking() {
                     <option value="" disabled>Vælg escape game</option>
                     {games.map(g => <option key={g} value={g}>{g}</option>)}
                   </select>
+                  {fieldErrors.game && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.game}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="city" className={labelClasses}>By*</label>
                   <select
                     id="city"
@@ -219,9 +222,10 @@ export default function Booking() {
                     <option value="" disabled>Vælg by</option>
                     {cities.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
+                  {fieldErrors.city && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.city}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="date" className={labelClasses}>Dato*</label>
                   <select
                     id="date"
@@ -236,9 +240,10 @@ export default function Booking() {
                       <option key={date} value={date}>{date}</option>
                     ))}
                   </select>
+                  {fieldErrors.date && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.date}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="time" className={labelClasses}>Tidspunkt*</label>
                   <select
                     id="time"
@@ -256,9 +261,10 @@ export default function Booking() {
                       <option key={time} value={time}>{time}</option>
                     ))}
                   </select>
+                  {fieldErrors.time && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.time}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="participants" className={labelClasses}>Antal deltagere*</label>
                   <select
                     id="participants"
@@ -273,9 +279,10 @@ export default function Booking() {
                       <option key={num} value={num}>{num}</option>
                     ))}
                   </select>
+                  {fieldErrors.participants && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.participants}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="route" className={labelClasses}>Rute*</label>
                   <select
                     id="route"
@@ -288,16 +295,10 @@ export default function Booking() {
                     <option value="" disabled>Vælg rute</option>
                     {routes.map(r => <option key={r} value={r}>{r}</option>)}
                   </select>
+                  {fieldErrors.route && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.route}</p>}
                 </div>
-              </div>
 
-              {/* SEKTION 2: HOLDLEDERENS OPLYSNINGER */}
-              <div className="grid gap-4 mt-4 min-[700px]:grid-cols-2 min-[700px]:gap-x-12 min-[700px]:gap-y-6">
-                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2 min-[700px]:col-span-2 min-[700px]:text-3xl">
-                  holdlederens oplysninger
-                </h2>
-
-                <div>
+                <div className="relative">
                   <label htmlFor="name" className={labelClasses}>Fulde navn*</label>
                   <input
                     type="text"
@@ -309,9 +310,10 @@ export default function Booking() {
                     onChange={handleChange}
                     className={inputClasses}
                   />
+                  {fieldErrors.name && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.name}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="email" className={labelClasses}>E-mail*</label>
                   <input
                     type="email"
@@ -323,9 +325,10 @@ export default function Booking() {
                     onChange={handleChange}
                     className={inputClasses}
                   />
+                  {fieldErrors.email && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.email}</p>}
                 </div>
 
-                <div>
+                <div className="relative">
                   <label htmlFor="phone" className={labelClasses}>Telefonnummer*</label>
                   <input
                     type="tel"
@@ -337,6 +340,7 @@ export default function Booking() {
                     onChange={handleChange}
                     className={inputClasses}
                   />
+                  {fieldErrors.phone && <p className="text-red-400 text-xs absolute left-1 -bottom-5">{fieldErrors.phone}</p>}
                 </div>
 
                 <div>
