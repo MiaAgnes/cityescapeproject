@@ -75,7 +75,7 @@ export default function Booking() {
   return (
     <Layout bgClass="subpage-bg">
       <main className="grid place-items-center pt-8 px-6 w-full pb-12">
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-8 text-center">
+        <div className="w-full max-w-lg min-[700px]:max-w-4xl grid grid-cols-1 justify-items-center gap-8 text-center">
           
           {!status.success && (
             <div className="grid gap-2">
@@ -100,8 +100,8 @@ export default function Booking() {
             <form onSubmit={handleSubmit} className="w-full grid gap-6 text-left">
               
               {/* SEKTION 1: INDLED JERES MISSION */}
-              <div className="grid gap-4">
-                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2">
+              <div className="grid gap-4 min-[700px]:grid-cols-2 min-[700px]:gap-x-12 min-[700px]:gap-y-6">
+                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2 min-[700px]:col-span-2 min-[700px]:text-3xl">
                   indled jeres mission
                 </h2>
 
@@ -206,8 +206,8 @@ export default function Booking() {
               </div>
 
               {/* SEKTION 2: HOLDLEDERENS OPLYSNINGER */}
-              <div className="grid gap-4 mt-4">
-                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2">
+              <div className="grid gap-4 mt-4 min-[700px]:grid-cols-2 min-[700px]:gap-x-12 min-[700px]:gap-y-6">
+                <h2 className="font-primary text-2xl text-[#C9955D] text-center mt-4 mb-2 min-[700px]:col-span-2 min-[700px]:text-3xl">
                   holdlederens oplysninger
                 </h2>
 
