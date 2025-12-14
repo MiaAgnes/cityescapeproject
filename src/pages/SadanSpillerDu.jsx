@@ -56,7 +56,7 @@ export default function SadanSpillerDu() {
               Ingen spørgsmål er for små, når et mysterium skal løses.
             </p>
             
-            <a href="/kontakt-os" className="no-underline mt-2">
+            <a href="/cityescapeproject/kontakt-os" className="no-underline mt-2">
               <Button size="large">KONTAKT</Button>
             </a>
           </div>

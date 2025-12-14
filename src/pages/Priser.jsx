@@ -35,7 +35,7 @@ export default function Priser() {
 
           {/* Button */}
           <div className="w-full flex justify-center mt-4">
-            <a href="/escape-games" className="no-underline">
+            <a href="/cityescapeproject/escape-games" className="no-underline">
               <Button size="large">FIND GAME</Button>
             </a>
           </div>

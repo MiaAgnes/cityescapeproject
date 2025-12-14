@@ -23,12 +23,12 @@ export default function Layout({
   }, [isMenuOpen]);
 
   const navLinks = [
-    { title: "escape games", href: "/escape-games" },
-    { title: "priser", href: "/priser" },
-    { title: "booking", href: "/booking" },
-    { title: "generel info", href: "/generel-info" },
-    { title: "sådan spiller du", href: "/sadan-spiller-du" },
-    { title: "kontakt os", href: "/kontakt-os" },
+    { title: "escape games", href: "/cityescapeproject/escape-games" },
+    { title: "priser", href: "/cityescapeproject/priser" },
+    { title: "booking", href: "/cityescapeproject/booking" },
+    { title: "generel info", href: "/cityescapeproject/generel-info" },
+    { title: "sådan spiller du", href: "/cityescapeproject/sadan-spiller-du" },
+    { title: "kontakt os", href: "/cityescapeproject/kontakt-os" },
   ];
 
   return (
@@ -72,7 +72,7 @@ export default function Layout({
             {/* LOGO SECTION */}
             <div className="justify-self-center min-[700px]:justify-self-start flex items-center min-[700px]:gap-4 lg:gap-6 xl:gap-8">
               <a
-                href="/"
+                href="/cityescapeproject/"
                 className="
                   flex flex-col min-[700px]:flex-row items-center gap-2 min-[700px]:gap-2 min-[750px]:gap-4
                   no-underline text-[#C9955D]

@@ -9,10 +9,20 @@ import GeneralInfo from "./pages/GeneralInfo.jsx";
 import KontaktOs from "./pages/KontaktOs.jsx";
 
 function App() {
-  const [path, setPath] = useState(window.location.pathname);
+  const basePath = "/cityescapeproject";
+
+  const getPath = () => {
+    const p = window.location.pathname;
+    if (p.startsWith(basePath)) {
+      return p.substring(basePath.length) || "/";
+    }
+    return p;
+  };
+
+  const [path, setPath] = useState(getPath());
 
   useEffect(() => {
-    const onPopState = () => setPath(window.location.pathname);
+    const onPopState = () => setPath(getPath());
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);

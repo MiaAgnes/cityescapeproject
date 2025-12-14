@@ -96,7 +96,7 @@ export default function GeneralInfo() {
               Vi hjælper dig gerne videre, så jeres mission kan starte uden usikkerheder.
             </p>
             
-            <a href="/kontakt-os" className="no-underline mt-2">
+            <a href="/cityescapeproject/kontakt-os" className="no-underline mt-2">
               <Button size="large">KONTAKT</Button>
             </a>
           </div>
