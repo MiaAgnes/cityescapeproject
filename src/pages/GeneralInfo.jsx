@@ -57,7 +57,7 @@ export default function GeneralInfo() {
             <div className="grid grid-cols-2 min-[700px]:grid-cols-4 gap-x-8 gap-y-2 text-left text-[#C9955D] font-secondary text-sm sm:text-base mt-4 w-full max-w-5xl mx-auto">
               {cities.map((city) => (
                 <div key={city} className="flex items-center justify-center">
-                  <img src="/logo-uden-bg.svg" alt="" className="w-4 h-4 mr-1" />
+                  <img src="/cityescapeproject/logo-uden-bg.svg" alt="" className="w-4 h-4 mr-1" />
                   <span>{city}</span>
                 </div>
               ))}

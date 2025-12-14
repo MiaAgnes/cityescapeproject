@@ -25,10 +25,10 @@ export default function LandingPage() {
             className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-5 md:gap-8 lg:gap-12"
           >
             {[
-              { title: "Escape games", image: "/icons/escape-games.svg", href: "/escape-games" },
-              { title: "Priser", image: "/icons/priser.svg", href: "/priser" },
-              { title: "Sådan spiller du", image: "/icons/regler.svg", href: "/sadan-spiller-du" },
-              { title: "Booking", image: "/icons/booking.svg", href: "/booking" },
+              { title: "Escape games", image: "/cityescapeproject/icons/escape-games.svg", href: "/cityescapeproject/escape-games" },
+              { title: "Priser", image: "/cityescapeproject/icons/priser.svg", href: "/cityescapeproject/priser" },
+              { title: "Sådan spiller du", image: "/cityescapeproject/icons/regler.svg", href: "/cityescapeproject/sadan-spiller-du" },
+              { title: "Booking", image: "/cityescapeproject/icons/booking.svg", href: "/cityescapeproject/booking" },
             ].map((card) => (
               <a
                 key={card.title}

@@ -41,17 +41,17 @@ export default function GameDetails() {
           <div className="flex justify-center gap-6 min-[700px]:gap-16 w-full -mt-5">
              {/* Stat 1 */}
              <div className="flex flex-col items-center gap-1">
-               <img src="/icons/varighed.svg" alt="Varighed" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <img src="/cityescapeproject/icons/varighed.svg" alt="Varighed" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
                <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.duration}</span>
              </div>
              {/* Stat 2 */}
              <div className="flex flex-col items-center gap-1">
-               <img src="/icons/deltagere.svg" alt="Deltagere" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <img src="/cityescapeproject/icons/deltagere.svg" alt="Deltagere" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
                <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.participants}</span>
              </div>
              {/* Stat 3 */}
              <div className="flex flex-col items-center gap-1">
-               <img src="/icons/svaerhedsgrad.svg" alt="Sværhedsgrad" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
+               <img src="/cityescapeproject/icons/svaerhedsgrad.svg" alt="Sværhedsgrad" className="w-12 h-12 min-[700px]:w-16 min-[700px]:h-16 object-contain" />
                <span className="text-[#C9955D] font-secondary text-sm min-[700px]:text-lg">{game.difficulty}</span>
              </div>
           </div>
