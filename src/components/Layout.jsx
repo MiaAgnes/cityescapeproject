@@ -74,25 +74,22 @@ export default function Layout({
               <a
                 href="/"
                 className="
-                  flex flex-col min-[700px]:flex-row items-center gap-2 min-[700px]:gap-4
+                  flex flex-col min-[700px]:flex-row items-center gap-2 min-[700px]:gap-2 min-[750px]:gap-4
                   no-underline text-[#C9955D]
                 "
               >
-                <Logo height={60} />
+                <Logo className="h-[60px] min-[700px]:h-[50px] min-[750px]:h-[60px]" />
                 <span className="font-primary tracking-wide text-[20px] min-[700px]:text-[16px] lg:text-[20px] xl:text-[24px]">
                   cityescape
                 </span>
               </a>
-              
-              {/* Vertical Divider (Desktop Only) */}
-              <div className="hidden min-[700px]:block h-10 lg:h-12 w-[1px] bg-[#C9955D]"></div>
             </div>
 
             {/* tom spacer på mobil for at holde logo centreret */}
             <div className="min-[700px]:hidden" />
 
             {/* DESKTOP NAV */}
-            <nav className="hidden min-[700px]:flex items-center min-[700px]:gap-3 lg:gap-6 xl:gap-10 min-[700px]:text-[10px] lg:text-[12px] xl:text-[14px] min-[700px]:tracking-[0.1em] lg:tracking-[0.2em] uppercase font-secondary whitespace-nowrap">
+            <nav className="hidden min-[700px]:flex items-center min-[700px]:gap-2 lg:gap-6 xl:gap-10 min-[700px]:text-[10px] lg:text-[12px] xl:text-[14px] min-[700px]:tracking-[0.1em] lg:tracking-[0.2em] uppercase font-secondary whitespace-nowrap">
               {navLinks.map((link) => (
                 <a
                   key={link.title}

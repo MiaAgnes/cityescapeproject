@@ -1,11 +1,12 @@
 // Logo.jsx
 import logo from "/public/logo.png";
 
-export default function Logo({ height = 60 }) {
+export default function Logo({ height, className }) {
   return (
     <div
+      className={className}
       style={{
-        height,
+        height: height,
         display: "flex",
         alignItems: "center",
       }}

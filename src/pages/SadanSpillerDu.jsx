@@ -28,19 +28,19 @@ export default function SadanSpillerDu() {
   return (
     <Layout bgClass="landing-bg">
       <main className="grid place-items-center pt-4 px-6 w-full pb-6">
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-4 text-center">
+        <div className="w-full max-w-lg min-[700px]:max-w-7xl grid grid-cols-1 justify-items-center gap-4 min-[700px]:gap-10 text-center">
           
           <h1 className="font-primary text-3xl text-[#C9955D]">sådan spiller du</h1>
 
           {sections.map((section, index) => (
-            <div key={index} className="w-full grid gap-2 justify-items-center">
-              <div className="h-[1px] bg-[#C9955D] w-full opacity-50"></div>
+            <div key={index} className="w-full grid justify-items-center">
+              <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
               
-              <h2 className="font-primary text-xl text-[#C9955D]">
+              <h2 className="font-primary text-xl text-[#C9955D] mb-2 min-[700px]:mb-4">
                 {section.title}
               </h2>
               
-              <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+              <p className="text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl text-center">
                 {section.text}
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function SadanSpillerDu() {
 
           <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mt-2"></div>
 
-          <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed">
+          <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl">
             <p>
               Hvis der er noget, du stadig undrer dig over, hjælper vi dig gerne. Skriv til os, så guider vi dig, før din mission overhovedet begynder.
             </p>

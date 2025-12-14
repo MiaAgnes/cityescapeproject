@@ -48,25 +48,25 @@ export default function GeneralInfo() {
   ];
 
   return (
-    <Layout bgClass="subpage-bg">
+    <Layout bgClass="landing-bg">
       <main className="grid place-items-center pt-4 px-6 w-full pb-6">
-        <div className="w-full max-w-lg grid grid-cols-1 justify-items-center gap-4 text-center">
+        <div className="w-full max-w-lg min-[700px]:max-w-7xl grid grid-cols-1 justify-items-center gap-4 min-[700px]:gap-10 text-center">
           
           {/* Cities Section */}
-          <div className="grid gap-2 justify-items-center">
+          <div className="grid gap-2 justify-items-center w-full">
             <h1 className="font-primary text-2xl sm:text-3xl text-[#C9955D]">
               hvor kan cityescape spilles?
             </h1>
-            <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+            <p className="text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl">
               CityEscape kan spilles i 17 danske byer, hvor hver mission er skræddersyet til byens gader, stemning og skjulte kroge.
             </p>
-            <p className="text-[#C9955D] font-secondary text-sm sm:text-base italic">
+            <p className="text-[#C9955D] font-secondary text-sm sm:text-base italic mt-[15px]">
               Her opererer vi i øjeblikket:
             </p>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-left text-[#C9955D] font-secondary text-sm sm:text-base mt-2">
+            <div className="grid grid-cols-2 min-[700px]:grid-cols-4 gap-x-8 gap-y-2 text-left text-[#C9955D] font-secondary text-sm sm:text-base mt-4 w-full max-w-5xl mx-auto">
               {cities.map((city) => (
-                <div key={city} className="flex items-center">
+                <div key={city} className="flex items-center justify-center">
                   <img src="/logo-uden-bg.svg" alt="" className="w-4 h-4 mr-1" />
                   <span>{city}</span>
                 </div>
@@ -80,23 +80,23 @@ export default function GeneralInfo() {
 
           {/* Info Sections */}
           {sections.map((section, index) => (
-            <div key={index} className="w-full grid gap-2 justify-items-center">
-              <div className="h-[1px] bg-[#C9955D] w-full opacity-50"></div>
+            <div key={index} className="w-full grid justify-items-center">
+              <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mb-4 min-[700px]:mb-8"></div>
               
-              <h2 className="font-primary text-xl text-[#C9955D]">
+              <h2 className="font-primary text-xl text-[#C9955D] mb-2 min-[700px]:mb-4">
                 {section.title}
               </h2>
               
-              <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+              <p className="text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl text-center">
                 {section.text}
               </p>
             </div>
           ))}
 
-          <div className="h-[1px] bg-[#C9955D] w-full opacity-50 mt-2"></div>
+          <div className="h-[1px] bg-[#C9955D] w-full opacity-50"></div>
 
           {/* Footer / Contact Section */}
-          <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed">
+          <div className="grid gap-4 justify-items-center text-white font-secondary text-sm sm:text-base leading-relaxed max-w-3xl">
             <p>
               Sidder du stadig med et spørgsmål?
               <br />
