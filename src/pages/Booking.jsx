@@ -23,22 +23,50 @@ export default function Booking() {
   const cities = ["Aalborg", "Aarhus", "Esbjerg", "Fredericia", "Herning", "Viborg", "Randers", "Horsens", "Sønderborg", "Vejle", "Silkeborg", "Kolding", "Odense", "Næstved", "Roskilde", "Helsingør", "København"]; 
   const routes = ["Standard", "Light (Børnefamilie)", "Let (Kortere)"];
 
-  const availableSlots = {
-    "Fredag d. 12. Dec": ["10:00", "11:00", "12:30", "13:30", "15:00", "16:00", "17:30", "18:30"],
-    "Lørdag d. 13. Dec": ["09:00", "10:00", "11:30", "12:30", "14:00", "15:00", "16:30", "17:30", "19:00"],
-    "Søndag d. 14. Dec": ["10:00", "11:00", "13:00", "14:00", "16:00", "17:00"],
-    "Mandag d. 15. Dec": ["14:00", "15:00", "16:30", "17:30"],
-    "Tirsdag d. 16. Dec": ["14:00", "15:00", "16:30", "17:30"],
-    "Onsdag d. 17. Dec": ["14:00", "15:00", "16:30", "17:30"],
-    "Torsdag d. 18. Dec": ["14:00", "15:00", "16:30", "17:30", "19:00"],
-    "Fredag d. 19. Dec": ["12:00", "13:00", "14:00", "15:30", "16:30", "18:00", "19:00"],
-    "Lørdag d. 20. Dec": ["09:00", "10:00", "11:30", "12:30", "14:00", "15:00", "16:30", "17:30", "19:00"],
-    "Søndag d. 21. Dec": ["10:00", "11:30", "13:00", "14:30", "16:00"],
-    "Mandag d. 22. Dec": ["10:00", "12:00", "14:00", "16:00"],
-    "Tirsdag d. 23. Dec": ["10:00", "12:00", "14:00", "16:00"],
-    "Lørdag d. 27. Dec": ["10:00", "12:00", "14:00", "16:00", "18:00"],
-    "Søndag d. 28. Dec": ["10:00", "12:00", "14:00", "16:00"],
+  const generateAvailableSlots = () => {
+    const slots = {};
+    const today = new Date();
+    const daysToGenerate = 30; // Generer datoer for de næste 30 dage
+
+    const timeSlots = {
+      weekday: ["14:00", "15:00", "16:30", "17:30"],
+      friday: ["12:00", "13:00", "14:00", "15:30", "16:30", "18:00", "19:00"],
+      saturday: ["09:00", "10:00", "11:30", "12:30", "14:00", "15:00", "16:30", "17:30", "19:00"],
+      sunday: ["10:00", "11:30", "13:00", "14:30", "16:00"],
+    };
+
+    for (let i = 0; i < daysToGenerate; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+
+      const dayName = date.toLocaleDateString('da-DK', { weekday: 'long' });
+      const day = date.getDate();
+      const month = date.toLocaleDateString('da-DK', { month: 'short' });
+      
+      const capitalizedDayName = dayName.charAt(0).toUpperCase() + dayName.slice(1);
+      const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1).replace('.', '');
+
+      const dateString = `${capitalizedDayName} d. ${day}. ${capitalizedMonth}`;
+
+      const dayOfWeek = date.getDay(); // 0 = Søndag, 6 = Lørdag
+      
+      let times = [];
+      if (dayOfWeek === 5) { // Fredag
+          times = timeSlots.friday;
+      } else if (dayOfWeek === 6) { // Lørdag
+          times = timeSlots.saturday;
+      } else if (dayOfWeek === 0) { // Søndag
+          times = timeSlots.sunday;
+      } else {
+          times = timeSlots.weekday;
+      }
+
+      slots[dateString] = times;
+    }
+    return slots;
   };
+
+  const availableSlots = generateAvailableSlots();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,44 +80,61 @@ export default function Booking() {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: null });
 
+    const setErrorAndScroll = (errorMessage, fieldId) => {
+      setStatus({ loading: false, success: false, error: errorMessage });
+      // Vent en lille smule for at sikre at state er opdateret, og scroll derefter
+      setTimeout(() => {
+        const element = document.getElementById(fieldId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+          element.focus();
+          // Tilføj en midlertidig highlight effekt
+          element.style.borderColor = "#ff6b6b";
+          setTimeout(() => {
+            element.style.borderColor = ""; // Reset border color after 2 seconds
+          }, 2000);
+        }
+      }, 100);
+    };
+
     // Validering
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{8}$/; // Antager danske numre (8 cifre)
 
     if (!formData.game) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge et escape game." });
+      setErrorAndScroll("Du mangler at vælge et escape game.", "game");
       return;
     }
     if (!formData.city) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge en by." });
+      setErrorAndScroll("Du mangler at vælge en by.", "city");
       return;
     }
     if (!formData.date) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge en dato." });
+      setErrorAndScroll("Du mangler at vælge en dato.", "date");
       return;
     }
     if (!formData.time) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge et tidspunkt." });
+      setErrorAndScroll("Du mangler at vælge et tidspunkt.", "time");
       return;
     }
     if (!formData.participants) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge antal deltagere." });
+      setErrorAndScroll("Du mangler at vælge antal deltagere.", "participants");
       return;
     }
     if (!formData.route) {
-      setStatus({ loading: false, success: false, error: "Du mangler at vælge en rute." });
+      setErrorAndScroll("Du mangler at vælge en rute.", "route");
       return;
     }
     if (!formData.name.trim()) {
-      setStatus({ loading: false, success: false, error: "Du mangler at indtaste dit navn." });
+      setErrorAndScroll("Du mangler at indtaste dit navn.", "name");
       return;
     }
     if (!emailRegex.test(formData.email)) {
-      setStatus({ loading: false, success: false, error: "Indtast venligst en gyldig e-mail adresse." });
+      setErrorAndScroll("Indtast venligst en gyldig e-mail adresse.", "email");
       return;
     }
     if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
-      setStatus({ loading: false, success: false, error: "Indtast venligst et gyldigt telefonnummer (8 cifre)." });
+      setErrorAndScroll("Indtast venligst et gyldigt telefonnummer (8 cifre).", "phone");
       return;
     }
 
