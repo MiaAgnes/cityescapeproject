@@ -52,6 +52,47 @@ export default function Booking() {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: null });
 
+    // Validering
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9]{8}$/; // Antager danske numre (8 cifre)
+
+    if (!formData.game) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge et escape game." });
+      return;
+    }
+    if (!formData.city) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge en by." });
+      return;
+    }
+    if (!formData.date) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge en dato." });
+      return;
+    }
+    if (!formData.time) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge et tidspunkt." });
+      return;
+    }
+    if (!formData.participants) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge antal deltagere." });
+      return;
+    }
+    if (!formData.route) {
+      setStatus({ loading: false, success: false, error: "Du mangler at vælge en rute." });
+      return;
+    }
+    if (!formData.name.trim()) {
+      setStatus({ loading: false, success: false, error: "Du mangler at indtaste dit navn." });
+      return;
+    }
+    if (!emailRegex.test(formData.email)) {
+      setStatus({ loading: false, success: false, error: "Indtast venligst en gyldig e-mail adresse." });
+      return;
+    }
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
+      setStatus({ loading: false, success: false, error: "Indtast venligst et gyldigt telefonnummer (8 cifre)." });
+      return;
+    }
+
     try {
       await addDoc(collection(db, "bookings"), {
         ...formData,
@@ -87,7 +128,7 @@ export default function Booking() {
 
           {status.success ? (
             <div className="border border-[#d1b27c]/40 p-6 rounded-[10px] text-white font-secondary">
-              <h3 className="font-primary text-xl mb-2 text-[#C9955D]">Tak for din booking</h3>
+              <h3 className="font-primary text-xl mb-2 text-[#C9955D]">tak for din booking</h3>
               <p>Vi har modtaget din booking og sender en bekræftelse til din mail snarest.</p>
               <button 
                 onClick={() => setStatus({ ...status, success: false })}
