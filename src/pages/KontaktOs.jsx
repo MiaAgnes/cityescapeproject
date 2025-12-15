@@ -70,7 +70,7 @@ export default function KontaktOs() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:ring-2 focus:ring-[#C9955D] transition-all placeholder-gray-400"
+                      className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:ring-2 focus:ring-[#C9955D] transition-all placeholder-white"
                       placeholder="Indtast e-mail.."
                     />
                   </div>
@@ -84,7 +84,7 @@ export default function KontaktOs() {
                       rows="6"
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:ring-2 focus:ring-[#C9955D] transition-all resize-none placeholder-gray-400"
+                      className="w-full bg-black/40 border border-[#C9955D] rounded p-3 text-white font-secondary focus:outline-none focus:ring-2 focus:ring-[#C9955D] transition-all resize-none placeholder-white"
                       placeholder="Skriv din besked her.."
                     ></textarea>
                   </div>

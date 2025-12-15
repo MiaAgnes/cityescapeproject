@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Layout from "../components/Layout.jsx";
@@ -23,6 +23,19 @@ export default function Booking() {
   const games = ["Operation Mindfall", "Black Out", "Hunt A Killer", "Den Magiske Portal", "Red Julen", "Save The Wedding(Kvinder)", "Save The Wedding(Mænd)", "Børnefødselsdag"];
   const cities = ["Aalborg", "Aarhus", "Esbjerg", "Fredericia", "Herning", "Viborg", "Randers", "Horsens", "Sønderborg", "Vejle", "Silkeborg", "Kolding", "Odense", "Næstved", "Roskilde", "Helsingør", "København"]; 
   const routes = ["Standard", "Light (Børnefamilie)", "Let (Kortere)"];
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const gameParam = params.get("game");
+    
+    if (gameParam) {
+      // Find spillet i listen, uanset store/små bogstaver
+      const matchedGame = games.find(g => g.toLowerCase() === gameParam.toLowerCase());
+      if (matchedGame) {
+        setFormData(prev => ({ ...prev, game: matchedGame }));
+      }
+    }
+  }, []);
 
   const generateAvailableSlots = () => {
     const slots = {};
@@ -157,7 +170,7 @@ export default function Booking() {
     }
   };
 
-  const inputClasses = "w-full box-border bg-black border border-[#C9955D] rounded-[10px] p-3 text-white font-secondary focus:outline-none focus:border-[#fff] transition-colors placeholder:text-gray-500 appearance-none";
+  const inputClasses = "w-full box-border bg-black border border-[#C9955D] rounded-[10px] p-3 text-white font-secondary focus:outline-none focus:border-[#fff] transition-colors placeholder:text-white appearance-none";
   const labelClasses = "block text-[#C9955D] font-secondary text-sm mb-1 ml-1";
 
   return (

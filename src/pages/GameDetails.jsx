@@ -68,7 +68,7 @@ export default function GameDetails() {
                 </div>
              </div>
              
-             <a href="/cityescapeproject/booking" className="no-underline">
+             <a href={`/cityescapeproject/booking?game=${encodeURIComponent(game.title)}`} className="no-underline">
                <Button size="large">BOOK</Button>
              </a>
           </div>
