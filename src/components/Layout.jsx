@@ -126,15 +126,13 @@ export default function Layout({
           </nav>
         )}
 
-        {/* === CONTENT + FOOTER (når menu er lukket) === */}
         {!isMenuOpen && (
           <div className={`w-full grid ${compactFooter ? "grid-rows-[auto_auto]" : "grid-rows-[1fr_auto]"}`}>
-            {/* content */}
             <div className="w-full">
               {children}
             </div>
 
-            {/* FOOTER – følger bare efter content */}
+            {/* FOOTER – følger efter content */}
             <div className="grid grid-cols-1 justify-items-center w-full">
               <div className="h-5 md:h-8" />
               <footer className="font-secondary text-[10px] text-center pb-8 text-[#C9955D]/70 w-full">

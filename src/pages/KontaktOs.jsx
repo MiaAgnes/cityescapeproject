@@ -37,17 +37,19 @@ export default function KontaktOs() {
       <main className="grid place-items-center pt-8 px-6 w-full pb-12">
         <div className="w-full max-w-lg min-[700px]:max-w-7xl grid grid-cols-1 justify-items-center gap-8 text-center">
           
-          <div className="grid gap-4 justify-items-center w-full max-w-5xl">
-            <h1 className="font-primary text-3xl text-[#C9955D]">kontakt os</h1>
-            
-            <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
-              Har du spørgsmål til et arrangement, eller vil du vide mere om vores spil? Udfyld formularen herunder, så vender vi tilbage hurtigst muligt.
-            </p>
-          </div>
+          {!status.success && (
+            <div className="grid gap-4 justify-items-center w-full max-w-5xl">
+              <h1 className="font-primary text-3xl text-[#C9955D]">kontakt os</h1>
+              
+              <p className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+                Har du spørgsmål til et arrangement, eller vil du vide mere om vores spil? Udfyld formularen herunder, så vender vi tilbage hurtigst muligt.
+              </p>
+            </div>
+          )}
 
           {status.success ? (
-            <div className="bg-[#C9955D]/20 border border-[#C9955D] p-6 rounded text-white font-secondary">
-              <h3 className="font-primary text-xl mb-2">Tak for din besked!</h3>
+            <div className="border border-[#d1b27c]/40 p-6 rounded-[10px] text-white font-secondary">
+              <h3 className="font-primary text-xl mb-2 text-[#C9955D]">tak for din besked!</h3>
               <p>Vi har modtaget din henvendelse og vender tilbage snarest.</p>
               <button 
                 onClick={() => setStatus({ ...status, success: false })}
@@ -108,13 +110,17 @@ export default function KontaktOs() {
             </div>
           )}
 
-          <div className="h-px bg-[#C9955D] w-full opacity-50 mt-4"></div>
+          {!status.success && (
+            <>
+              <div className="h-px bg-[#C9955D] w-full opacity-50 mt-4"></div>
 
-          <div className="text-white font-secondary text-sm sm:text-base leading-relaxed">
-            <p>Du kan også fange os på telefon eller mail:</p>
-            <p className="text-[#C9955D] mt-2">+45 71 96 16 87</p>
-            <p className="text-[#C9955D]">INFO@CITYESCAPE.DK</p>
-          </div>
+              <div className="text-white font-secondary text-sm sm:text-base leading-relaxed">
+                <p>Du kan også fange os på telefon eller mail:</p>
+                <p className="text-[#C9955D] mt-2">+45 71 96 16 87</p>
+                <p className="text-[#C9955D]">INFO@CITYESCAPE.DK</p>
+              </div>
+            </>
+          )}
 
         </div>
       </main>

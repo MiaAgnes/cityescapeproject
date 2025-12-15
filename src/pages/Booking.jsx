@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Layout from "../components/Layout.jsx";
@@ -24,18 +24,7 @@ export default function Booking() {
   const cities = ["Aalborg", "Aarhus", "Esbjerg", "Fredericia", "Herning", "Viborg", "Randers", "Horsens", "Sønderborg", "Vejle", "Silkeborg", "Kolding", "Odense", "Næstved", "Roskilde", "Helsingør", "København"]; 
   const routes = ["Standard", "Light (Børnefamilie)", "Let (Kortere)"];
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const gameParam = params.get("game");
-    
-    if (gameParam) {
-      // Find spillet i listen, uanset store/små bogstaver
-      const matchedGame = games.find(g => g.toLowerCase() === gameParam.toLowerCase());
-      if (matchedGame) {
-        setFormData(prev => ({ ...prev, game: matchedGame }));
-      }
-    }
-  }, []);
+
 
   const generateAvailableSlots = () => {
     const slots = {};
